@@ -1,0 +1,50 @@
+﻿<Window x:Class="BashNIPI_MVVM.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BashNIPI_MVVM"
+        xmlns:vm="clr-namespace:BashNIPI_MVVM.ViewModel"
+
+        mc:Ignorable="d"
+        Title="Главное окно" Height="450" Width="800">
+    <Window.DataContext>
+        <vm:ApplicationViewModel/>
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Button Content="Добавить документ" Command="{Binding CreateRecordCommand}" CommandParameter="Document" 
+                VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
+        <Button Grid.Column="1" Content="Добавить задачу" Command="{Binding CreateRecordCommand}" CommandParameter="Goal" 
+                HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+        <ListView Name="TheListView" Grid.ColumnSpan="2" Grid.Column="0" ItemsSource="{Binding Records}" 
+                  SelectedItem = "{Binding SelectedRecord, Mode=TwoWay}" VerticalAlignment="Top" Margin="0,20,0,0">
+            
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Название" DisplayMemberBinding="{Binding Path=Name}"/>
+                    <GridViewColumn Header="Тип" DisplayMemberBinding="{Binding Path= ClassName}"/>
+                    <GridViewColumn>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content=" Открыть " Command="{Binding DataContext.OpenRecordCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" CommandParameter="{Binding}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Focusable" Value="false"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+        
+
+    </Grid>
+</Window>
