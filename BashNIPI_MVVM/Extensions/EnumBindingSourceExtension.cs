@@ -3,6 +3,9 @@ using System.Windows.Markup;
 
 namespace BashNIPI_MVVM.Extensions
 {
+    /// <summary>
+    /// Служит для привязки Enum к ComboBox
+    /// </summary>
     public class EnumBindingSourceExtension : MarkupExtension
     {
         private Type _enumType;

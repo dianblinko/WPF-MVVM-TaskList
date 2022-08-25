@@ -2,6 +2,9 @@
 
 namespace BashNIPI_MVVM.Services
 {
+    /// <summary>
+    /// Абстрактная фабрика для создания записей
+    /// </summary>
     public interface IRecordFactory
     {
         public Record CreateRecord(string name);

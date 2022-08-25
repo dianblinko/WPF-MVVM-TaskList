@@ -4,6 +4,9 @@ using System.Reflection;
 
 namespace BashNIPI_MVVM.Converters
 {
+    /// <summary>
+    /// Конвертирует значения Enum в Description для вывода Enum на русском языке
+    /// </summary>
     public class EnumDescriptionTypeConverter : EnumConverter
     {
         public EnumDescriptionTypeConverter(Type type) : base(type)

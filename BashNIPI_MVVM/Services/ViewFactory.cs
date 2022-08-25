@@ -4,6 +4,9 @@ using BashNIPI_MVVM.ViewModel;
 
 namespace BashNIPI_MVVM.Services
 {
+    /// <summary>
+    /// Абстрактная фабрика для создания отображений отдельных записей.
+    /// </summary>
     public interface ViewFactory
     {
         public void CreateView(Record record);

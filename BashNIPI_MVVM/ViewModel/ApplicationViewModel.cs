@@ -8,6 +8,9 @@ using BashNIPI_MVVM.Services;
 
 namespace BashNIPI_MVVM.ViewModel
 {
+    /// <summary>
+    /// Основная ViewModel приложения для работы с главным окном
+    /// </summary>
     public class ApplicationViewModel : INotifyPropertyChanged
     {
         private ObservableCollection<Record> _records;
@@ -100,6 +103,7 @@ namespace BashNIPI_MVVM.ViewModel
                 default:
                     throw new Exception($"Attempt to create a viewFactory for a non-existent class: {className}");
             }
+
             viewFactory.CreateView(SelectedRecord);
         }
     }
